@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="user_parent" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <top>
+        <fx:include source="UserMenu.fxml"></fx:include>
+    </top>
+    
+    <center>
+        <fx:include source="Options.fxml"></fx:include>
+    </center>
+
+</BorderPane>

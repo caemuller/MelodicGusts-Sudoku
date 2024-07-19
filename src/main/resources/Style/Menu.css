@@ -1,0 +1,14 @@
+.menu_container {
+    -fx-background-color: #cec8c8;
+    -fx-spacing: 15;
+    -fx-padding: 0 0 10 10;
+}
+
+.menu_container Button {
+    -fx-background-color: #cec8c8;
+    -fx-font-size: 2em;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Calibri Light";
+    -fx-start-margin: 10 10 10 10;
+
+}
