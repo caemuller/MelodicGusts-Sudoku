@@ -2,41 +2,41 @@ package com.trabf.melodicgusts.Models.entities;
 
 public class Timer {
     private int seconds;
-    private boolean timeOver;
-
-    public Timer() {
-        this.seconds = 5;
-        this.timeOver = false;
-    }
+    private volatile boolean timeOver;
+    private Thread timerThread;
 
     public Timer(int seconds) {
         this.seconds = seconds;
         this.timeOver = false;
     }
 
-    public int getSeconds() {
-        return seconds;
-    }
-
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
-    }
-
     public void start() {
-        try {
-            Thread.sleep(this.seconds * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (timerThread != null && timerThread.isAlive()) {
+            // If the timer is already running, stop it before starting a new one
+            timerThread.interrupt();
         }
-        this.timeOver = true;
-    }
 
-    public void reset() {
-        this.seconds = 5;
-        this.timeOver = false;
+        timeOver = false;
+        timerThread = new Thread(() -> {
+            try {
+                Thread.sleep(seconds * 1000);
+                timeOver = true;
+                System.out.println("Time is over!");
+            } catch (InterruptedException e) {
+                System.out.println("Timer was interrupted.");
+            }
+        });
+        timerThread.start();
     }
 
     public boolean isTimeOver() {
         return timeOver;
+    }
+
+    public void reset() {
+        if (timerThread != null && timerThread.isAlive()) {
+            timerThread.interrupt();
+        }
+        timeOver = false;
     }
 }
