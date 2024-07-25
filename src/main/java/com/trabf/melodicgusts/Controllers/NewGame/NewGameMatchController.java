@@ -74,9 +74,17 @@ public class NewGameMatchController implements Initializable {
     public void onMusic(int row, int col) {
         Media media = Model.getInstance().getBoard4x4().getPieces()[row][col].getMedia();
         Model.getInstance().getBoard4x4().getMusic().createMediaPlayer(media);
-
         m00_media.setMediaPlayer(Model.getInstance().getBoard4x4().getMusic().getMediaPlayer());
-        Model.getInstance().getBoard4x4().getMusic().getMediaPlayer().play();
+
+        Model.getInstance().getTimer().reset();
+        Model.getInstance().getTimer().start();
+        while(!Model.getInstance().getTimer().isTimeOver()) {
+
+            Model.getInstance().getBoard4x4().getMusic().getMediaPlayer().play();
+        }
+
+        stopMusic();
+        Model.getInstance().getTimer().reset();
     }
 
     public void addButton(Button button) {

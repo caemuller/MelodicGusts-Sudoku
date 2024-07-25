@@ -2,6 +2,7 @@ package com.trabf.melodicgusts.Models;
 
 import com.trabf.melodicgusts.Models.entities.Board;
 import com.trabf.melodicgusts.Models.entities.Piece;
+import com.trabf.melodicgusts.Models.entities.Timer;
 import com.trabf.melodicgusts.Models.entities.User;
 import com.trabf.melodicgusts.Views.ViewFactory;
 
@@ -14,6 +15,7 @@ public class Model {
     private Board board6x6;
     private boolean onBoard4x4;
     private boolean onBoard6x6;
+    private Timer timer;
 
     public Model() {
         this.viewFactory = new ViewFactory();
@@ -21,6 +23,7 @@ public class Model {
         this.piece = new Piece();
         this.board4x4 = new Board(4, 4);
         this.board6x6 = new Board(6, 6);
+        this.timer = new Timer(5);
     }
 
     public static synchronized Model getInstance() {
@@ -60,5 +63,9 @@ public class Model {
 
     public void setOnBoard4x4(boolean onBoard4x4) {
         this.onBoard4x4 = onBoard4x4;
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 }
