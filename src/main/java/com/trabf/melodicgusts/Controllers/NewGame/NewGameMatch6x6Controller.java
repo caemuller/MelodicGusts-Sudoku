@@ -143,6 +143,7 @@ public class NewGameMatch6x6Controller implements Initializable {
         active_buttons.get(1).setText("X");
         accept_lbl.setText("Acertou !!!");
         accept_lbl.setStyle("-fx-text-fill: green; -fx-font-size: 1.3em; -fx-font-weight: bold");
+
     }
 
     public void onError() {
