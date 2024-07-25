@@ -38,7 +38,7 @@ public class Board {
         int flag=0;
 
         while (flag == 0) {
-            int random = rand.nextInt(8);
+            int random = rand.nextInt((rows * rows)/2);
             pairPieces.add(random);
 
             // conta quantas vezes o random esta na lista para formar os pares, só pode ter 2 numeros iguais na lista

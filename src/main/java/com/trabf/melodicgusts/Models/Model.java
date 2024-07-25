@@ -10,13 +10,17 @@ public class Model {
     private ViewFactory viewFactory;
     private final User user;
     private Piece piece;
-    private Board board;
+    private Board board4x4;
+    private Board board6x6;
+    private boolean onBoard4x4;
+    private boolean onBoard6x6;
 
     public Model() {
         this.viewFactory = new ViewFactory();
         this.user = new User("");
         this.piece = new Piece();
-        this.board = new Board(4, 4);
+        this.board4x4 = new Board(4, 4);
+        this.board6x6 = new Board(6, 6);
     }
 
     public static synchronized Model getInstance() {
@@ -36,6 +40,25 @@ public class Model {
     public Piece getPiece() {return piece;
     }
 
-    public Board getBoard() {return board;
+    public Board getBoard4x4() {return board4x4;
+    }
+
+    public Board getBoard6x6() {return board6x6;
+    }
+
+    public boolean isOnBoard6x6() {
+        return onBoard6x6;
+    }
+
+    public void setOnBoard6x6(boolean onBoard6x6) {
+        this.onBoard6x6 = onBoard6x6;
+    }
+
+    public boolean isOnBoard4x4() {
+        return onBoard4x4;
+    }
+
+    public void setOnBoard4x4(boolean onBoard4x4) {
+        this.onBoard4x4 = onBoard4x4;
     }
 }

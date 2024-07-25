@@ -17,7 +17,7 @@ public class UserController implements Initializable {
                case NEWGAME_BOARD -> user_parent.setCenter(Model.getInstance().getViewFactory().getNewGameBoardView());
                case NEWGAME_MODALITY -> user_parent.setCenter(Model.getInstance().getViewFactory().getNewGameModalityView());
                case NEWGAME_CHARACTER -> user_parent.setCenter(Model.getInstance().getViewFactory().getNewGameCharacterView());
-               case NEWGAME_MATCH -> user_parent.setCenter(Model.getInstance().getViewFactory().getNewGameMatchView());
+               case NEWGAME_MATCH -> user_parent.setCenter(Model.getInstance().getViewFactory().getNewGameMatch4x4View());
                default -> user_parent.setCenter(Model.getInstance().getViewFactory().getOptionsView());
            }
         });

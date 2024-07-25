@@ -1,6 +1,7 @@
 package com.trabf.melodicgusts.Views;
 
 import com.trabf.melodicgusts.Controllers.User.UserController;
+import com.trabf.melodicgusts.Models.Model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,9 @@ public class ViewFactory {
     private AnchorPane newGameBoardView;
     private AnchorPane newGameModalityView;
     private AnchorPane newGameCharacterView;
-    private AnchorPane newGameMatchView;
+    private AnchorPane newGameMatch4x4View;
+    private AnchorPane newGameMatch6x6View;
+
 
     public ViewFactory() {
         this.userMenuOptions = new SimpleObjectProperty<>();
@@ -71,15 +74,27 @@ public class ViewFactory {
         return newGameCharacterView;
     }
 
-    public AnchorPane getNewGameMatchView() {
-        if (newGameMatchView == null) {
-            try {
-                newGameMatchView = new FXMLLoader(getClass().getResource("/Fxml/NewGame/NewGameMatch.fxml")).load();
-            } catch (Exception e) {
-                e.printStackTrace();
+    public AnchorPane getNewGameMatch4x4View() {
+        if (Model.getInstance().isOnBoard4x4()) {
+            if (newGameMatch4x4View == null) {
+                try {
+                    newGameMatch4x4View = new FXMLLoader(getClass().getResource("/Fxml/NewGame/NewGameMatch.fxml")).load();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+            return newGameMatch4x4View;
         }
-        return newGameMatchView;
+        else {
+            if (newGameMatch6x6View == null) {
+                try {
+                    newGameMatch6x6View = new FXMLLoader(getClass().getResource("/Fxml/NewGame/NewGameMatch6x6.fxml")).load();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            return newGameMatch6x6View;
+        }
     }
 
     // SHOW WINDOW

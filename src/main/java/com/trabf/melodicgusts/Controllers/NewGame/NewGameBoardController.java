@@ -19,11 +19,18 @@ public class NewGameBoardController implements Initializable {
     }
 
     private void addListeners() {
-        board4x4_btn.setOnAction(event -> onBoard());
-        board6x6_btn.setOnAction(event -> onBoard());
+        board4x4_btn.setOnAction(event -> onBoard4x4());
+        board6x6_btn.setOnAction(event -> onBoard6x6());
     }
 
-    public void onBoard() {
+    private void onBoard6x6() {
+        Model.getInstance().setOnBoard6x6(true);
+        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_MODALITY);
+
+    }
+
+    public void onBoard4x4() {
+        Model.getInstance().setOnBoard4x4(true);
         Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_MODALITY);
     }
 }

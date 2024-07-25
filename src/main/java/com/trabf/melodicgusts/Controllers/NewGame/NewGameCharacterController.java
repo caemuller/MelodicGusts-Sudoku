@@ -21,12 +21,12 @@ public class NewGameCharacterController implements Initializable {
     }
 
     public void addListeners() {
-        options_btn.setOnAction(event -> onBackModalidade());
+        options_btn.setOnAction(event -> onBackModality());
         confirm_btn.setOnAction(e -> nameUser());
         ready_btn.setOnAction(event -> onCharacter());
     }
 
-    public void onBackModalidade() {
+    public void onBackModality() {
         Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_MODALITY);
     }
 
