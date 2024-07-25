@@ -1,9 +1,13 @@
 package com.trabf.melodicgusts.Models.entities;
 
+import java.time.Duration;
+import java.time.Instant;
+
 public class Timer {
     private int seconds;
     private volatile boolean timeOver;
-    private Thread timerThread;
+    private Instant startingTime;
+    
 
     public Timer(int seconds) {
         this.seconds = seconds;
@@ -11,22 +15,19 @@ public class Timer {
     }
 
     public void start() {
-        if (timerThread != null && timerThread.isAlive()) {
-            // If the timer is already running, stop it before starting a new one
-            timerThread.interrupt();
-        }
+        this.startingTime = Instant.now();
+    }
 
-        timeOver = false;
-        timerThread = new Thread(() -> {
-            try {
-                Thread.sleep(seconds * 1000);
-                timeOver = true;
-                System.out.println("Time is over!");
-            } catch (InterruptedException e) {
-                System.out.println("Timer was interrupted.");
-            }
-        });
-        timerThread.start();
+    public Instant getStartingTime() {
+        return this.startingTime;
+    }
+
+    public void checkTime() {
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(this.startingTime, end);
+        if (timeElapsed.getSeconds() >= seconds) {
+            this.timeOver = true;
+        }
     }
 
     public boolean isTimeOver() {
@@ -34,9 +35,6 @@ public class Timer {
     }
 
     public void reset() {
-        if (timerThread != null && timerThread.isAlive()) {
-            timerThread.interrupt();
-        }
         timeOver = false;
     }
 }
