@@ -58,6 +58,7 @@ public class Board {
             }
             cont = 0;
         }
+        pairPieces.clear();
     }
 
     public Music getMusic() {

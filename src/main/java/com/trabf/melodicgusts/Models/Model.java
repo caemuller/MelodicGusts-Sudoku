@@ -13,7 +13,6 @@ public class Model {
     private Piece piece;
     private Board board4x4;
     private Board board6x6;
-    private boolean onBoard4x4;
     private Timer timer;
 
     public Model() {
@@ -46,14 +45,6 @@ public class Model {
     }
 
     public Board getBoard6x6() {return board6x6;
-    }
-
-    public boolean isOnBoard4x4() {
-        return onBoard4x4;
-    }
-
-    public void setOnBoard4x4(boolean onBoard4x4) {
-        this.onBoard4x4 = onBoard4x4;
     }
 
     public Timer getTimer() {

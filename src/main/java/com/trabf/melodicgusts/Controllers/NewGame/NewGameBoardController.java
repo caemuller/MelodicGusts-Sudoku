@@ -28,7 +28,6 @@ public class NewGameBoardController implements Initializable {
     }
 
     private void onBoard4x4() {
-        Model.getInstance().setOnBoard4x4(true);
         Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.GAME_MATCH4X4);
     }
 }

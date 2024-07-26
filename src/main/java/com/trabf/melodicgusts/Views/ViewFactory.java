@@ -1,13 +1,18 @@
 package com.trabf.melodicgusts.Views;
 
 import com.trabf.melodicgusts.Controllers.User.UserController;
+import com.trabf.melodicgusts.Models.Model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -105,8 +110,37 @@ public class ViewFactory {
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK) {
-            //resetGameEasy();
+            resetGameMatch4x4();
             getUserMenuOptions().set(item);
+        }
+    }
+
+    // Reset Method
+    public void resetGameMatch4x4() {
+        if (gameMatch4x4View != null) {
+            // random pieces
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    Model.getInstance().getBoard4x4().randomPieces(i, j);
+                }
+            }
+            // reset Disable
+            GridPane grid = (GridPane) gameMatch4x4View.getChildren().get(1);
+            // i comeca por 1, pq o i=0 é o MediaView
+            for (int i = 1; i < (grid.getRowCount() * grid.getColumnCount()); i++) {
+                // permite clicar em todos botoes
+                grid.getChildren().get(i).setDisable(false);
+                // setText "?" em todos botoes
+                Button button = (Button) grid.getChildren().get(i);
+                button.setText("?");
+            }
+            // reset labels in GameMatch4x4
+            Label accept_lbl = (Label) gameMatch4x4View.getChildren().get(3);
+            accept_lbl.setText("");
+            Label error_lbl = (Label) gameMatch4x4View.getChildren().get(4);
+            error_lbl.setText("");
+            Label score_lbl = (Label) gameMatch4x4View.getChildren().get(5);
+            score_lbl.setText("50");
         }
     }
 
