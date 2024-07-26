@@ -118,7 +118,10 @@ public class ViewFactory {
     // Reset Method
     public void resetGameMatch4x4() {
         if (gameMatch4x4View != null) {
+            // starGame = true para reset labels
+            Model.getInstance().setStartGame(true);
             // random pieces
+            Model.getInstance().getBoard4x4().getPairPieces().clear();
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
                     Model.getInstance().getBoard4x4().randomPieces(i, j);
@@ -127,7 +130,7 @@ public class ViewFactory {
             // reset Disable
             GridPane grid = (GridPane) gameMatch4x4View.getChildren().get(1);
             // i comeca por 1, pq o i=0 é o MediaView
-            for (int i = 1; i < (grid.getRowCount() * grid.getColumnCount()); i++) {
+            for (int i = 1; i < (grid.getRowCount() * grid.getColumnCount()) + 1; i++) {
                 // permite clicar em todos botoes
                 grid.getChildren().get(i).setDisable(false);
                 // setText "?" em todos botoes

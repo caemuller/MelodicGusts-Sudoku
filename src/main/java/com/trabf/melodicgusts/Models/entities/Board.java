@@ -23,6 +23,10 @@ public class Board {
         return pieces;
     }
 
+    public List<Integer> getPairPieces() {
+        return pairPieces;
+    }
+
     public void createPieces() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -38,7 +42,7 @@ public class Board {
         int flag=0;
 
         while (flag == 0) {
-            int random = rand.nextInt((rows * rows)/2);
+            int random = rand.nextInt((rows * rows) / 2);
             pairPieces.add(random);
 
             // conta quantas vezes o random esta na lista para formar os pares, só pode ter 2 numeros iguais na lista
@@ -58,7 +62,6 @@ public class Board {
             }
             cont = 0;
         }
-        pairPieces.clear();
     }
 
     public Music getMusic() {

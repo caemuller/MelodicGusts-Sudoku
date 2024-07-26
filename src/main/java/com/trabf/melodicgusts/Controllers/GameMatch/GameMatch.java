@@ -1,4 +1,5 @@
 package com.trabf.melodicgusts.Controllers.GameMatch;
+import com.trabf.melodicgusts.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -59,12 +60,15 @@ public abstract class GameMatch implements Initializable {
 
     // clicou em um botao do gridPane
     protected void onButton(Button button, int row, int col) {
-        accept_lbl.setText("");
-        error_lbl.setText("");
+        if (Model.getInstance().isStartGame()) {
+            // set startGame = false;
+            Model.getInstance().setStartGame(false);
+            // reset variables
+            scoreInitialize();
+        }
         button.setDisable(true); //desabilita botao que foi clicado para nao poder clicar mais de uma vez
         addButton(button);
         openPiece(row, col);
-
         // score do usuario
         score -= 1;
         score_lbl.setText("" + score);

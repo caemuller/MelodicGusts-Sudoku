@@ -13,6 +13,7 @@ public class Model {
     private Piece piece;
     private Board board4x4;
     private Board board6x6;
+    private boolean startGame;
     private Timer timer;
 
     public Model() {
@@ -21,6 +22,7 @@ public class Model {
         this.piece = new Piece();
         this.board4x4 = new Board(4, 4);
         this.board6x6 = new Board(6, 6);
+        this.startGame = true;
         this.timer = new Timer(5);
     }
 
@@ -45,6 +47,14 @@ public class Model {
     }
 
     public Board getBoard6x6() {return board6x6;
+    }
+
+    public boolean isStartGame() {
+        return startGame;
+    }
+
+    public void setStartGame(boolean startGame) {
+        this.startGame = startGame;
     }
 
     public Timer getTimer() {
