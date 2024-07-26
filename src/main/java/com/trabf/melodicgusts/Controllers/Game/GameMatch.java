@@ -1,11 +1,8 @@
 package com.trabf.melodicgusts.Controllers.Game;
-
-import com.trabf.melodicgusts.Models.Model;
-import com.trabf.melodicgusts.Models.entities.Board;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaView;
 
 import java.net.URL;
@@ -14,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public abstract class GameMatch {
+public abstract class GameMatch implements Initializable {
     public Button[][] buttons;
     public GridPane gridPane;
     public Button confirm_btn;
@@ -23,28 +20,26 @@ public abstract class GameMatch {
     public Label error_lbl;
     public MediaView m00_media;
 
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        this.buttons = new Button[gridPane.getRowCount()][gridPane.getColumnCount()];
-//        createButtons();
-//        allButtons();
-//        confirm_btn.setOnAction(event -> comparisonPiece());  //faz a comparacao
-//    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.buttons = new Button[gridPane.getRowCount()][gridPane.getColumnCount()];
+        createButtons();
+        allButtons();
+        confirm_btn.setOnAction(event -> comparisonPiece());  //faz a comparacao
+    }
 
-    public void createButtons() {
+    protected void createButtons() {
         for (int i = 0; i < gridPane.getRowCount(); i++) {
             for (int j = 0; j < gridPane.getColumnCount(); j++) {
                 buttons[i][j] = new Button();
                 gridPane.add(buttons[i][j], j, i);
-                //buttons[i][j].setMinWidth(110.4);
-                //buttons[i][j].setMinHeight(86.4);
                 buttons[i][j].setStyle("-fx-background-color: #bfb8b8");
                 buttons[i][j].setText("?");
             }
         }
     }
 
-    public void allButtons() {
+    protected void allButtons() {
         for (int i = 0; i < gridPane.getRowCount(); i++) {
             for (int j = 0; j < gridPane.getColumnCount(); j++) {
                 int finalI = i;
@@ -54,7 +49,7 @@ public abstract class GameMatch {
         }
     }
 
-    public void onButton(Button button, int row, int col) {
+    protected void onButton(Button button, int row, int col) {
         accept_lbl.setText("");
         error_lbl.setText("");
         button.setDisable(true); //desabilita botao que foi clicado para nao poder clicar mais de uma vez
@@ -63,7 +58,7 @@ public abstract class GameMatch {
     }
 
     //verifica se existe mais de um botao ativo e para sua musica pq nao pode ter mais de uma musica tocando ao mesmo tempo
-    public void openPiece(int row, int col) {
+    protected void openPiece(int row, int col) {
         if(active_buttons.size() == 2) {
             stopMusic();
         }
@@ -71,10 +66,10 @@ public abstract class GameMatch {
     }
 
     // executa musica da determinada peca
-    public void onMusic(int row, int col) {
+    protected void onMusic(int row, int col) {
     }
 
-    public void addButton(Button button) {
+    protected void addButton(Button button) {
         //adiciona o botao na lista de botoes ativos
         active_buttons.add(button);
         // verifica se existe mais de um par de botoes na lista, só pode ter 2 boteos na lista na comparacao
@@ -83,7 +78,7 @@ public abstract class GameMatch {
         }
     }
 
-    public void removeButton(Button button) {
+    protected void removeButton(Button button) {
         //habilita o botao que foi removido para poder ser novamente clicado
         active_buttons.get(1).setDisable(false);
         //remove o segundo botao da lista
@@ -94,7 +89,7 @@ public abstract class GameMatch {
         active_buttons.remove(2);
     }
 
-    public void comparisonPiece() {
+    protected void comparisonPiece() {
         if(active_buttons.size() == 1) {
             stopMusic();
             error_lbl.setText("Error: Não é possivel fazer a comparação com 1 peça");
@@ -124,7 +119,7 @@ public abstract class GameMatch {
         return 0;
     }
 
-    public void onAcert() {
+    protected void onAcert() {
         // desabilita os botoes pq ja foram acertados
         active_buttons.get(0).setDisable(true);
         active_buttons.get(1).setDisable(true);
@@ -134,7 +129,7 @@ public abstract class GameMatch {
         accept_lbl.setStyle("-fx-text-fill: green; -fx-font-size: 1.3em; -fx-font-weight: bold");
     }
 
-    public void onError() {
+    protected void onError() {
         // habilita os botoes para poderem ser clicados
         active_buttons.get(0).setDisable(false);
         active_buttons.get(1).setDisable(false);
@@ -142,7 +137,7 @@ public abstract class GameMatch {
         accept_lbl.setStyle("-fx-text-fill: red; -fx-font-size: 1.3em; -fx-font-weight: bold");
     }
 
-    public void stopMusic() {
+    protected void stopMusic() {
     }
 
     // pegar a posicao do button
