@@ -6,6 +6,7 @@ public enum UserMenuOptions {
     NEWGAME_BOARD,
     NEWGAME_MODALITY,
     NEWGAME_CHARACTER,
-    NEWGAME_MATCH,
+    GAME_MATCH4X4,
+    GAME_MATCH6X6,
     ABOUT
 }

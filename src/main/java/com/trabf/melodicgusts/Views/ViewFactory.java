@@ -1,7 +1,6 @@
 package com.trabf.melodicgusts.Views;
 
 import com.trabf.melodicgusts.Controllers.User.UserController;
-import com.trabf.melodicgusts.Models.Model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +14,8 @@ public class ViewFactory {
     private AnchorPane newGameBoardView;
     private AnchorPane newGameModalityView;
     private AnchorPane newGameCharacterView;
-    private AnchorPane newGameMatch4x4View;
-    private AnchorPane newGameMatch6x6View;
+    private AnchorPane gameMatch4x4View;
+    private AnchorPane gameMatch6x6View;
 
     public ViewFactory() {
         this.userMenuOptions = new SimpleObjectProperty<>();
@@ -71,29 +70,26 @@ public class ViewFactory {
         return newGameCharacterView;
     }
 
-    public AnchorPane getNewGameMatch4x4View() {
-        // verifica se foi selecionado o jogo no tabuleiro 4x4
-        if (Model.getInstance().isOnBoard4x4()) {
-            Model.getInstance().setOnBoard4x4(false); // deixa livre a selecao de tabuleiro
-            if (newGameMatch4x4View == null) {
-                try {
-                    newGameMatch4x4View = new FXMLLoader(getClass().getResource("/Fxml/GameMatch/GameMatch4x4.fxml")).load();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+    public AnchorPane getGameMatch4x4View() {
+        if (gameMatch4x4View == null) {
+            try {
+                gameMatch4x4View = new FXMLLoader(getClass().getResource("/Fxml/GameMatch/GameMatch4x4.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            return newGameMatch4x4View;
         }
-        else {
-            if (newGameMatch6x6View == null) {
-                try {
-                    newGameMatch6x6View = new FXMLLoader(getClass().getResource("/Fxml/GameMatch/GameMatch6x6.fxml")).load();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        return gameMatch4x4View;
+    }
+
+    public AnchorPane getGameMatch6x6View() {
+        if (gameMatch6x6View == null) {
+            try {
+                gameMatch6x6View = new FXMLLoader(getClass().getResource("/Fxml/GameMatch/GameMatch6x6.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            return newGameMatch6x6View;
         }
+        return gameMatch6x6View;
     }
 
     // SHOW WINDOW

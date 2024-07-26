@@ -23,12 +23,12 @@ public class NewGameBoardController implements Initializable {
     }
 
     private void onBoard6x6() {
-        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_MATCH);
+        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.GAME_MATCH6X6);
 
     }
 
     private void onBoard4x4() {
         Model.getInstance().setOnBoard4x4(true);
-        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_MATCH);
+        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.GAME_MATCH4X4);
     }
 }
