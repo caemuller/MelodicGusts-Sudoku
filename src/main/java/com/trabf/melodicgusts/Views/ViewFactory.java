@@ -5,8 +5,12 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 public class ViewFactory {
     private final ObjectProperty<UserMenuOptions> userMenuOptions;
@@ -92,7 +96,21 @@ public class ViewFactory {
         return gameMatch6x6View;
     }
 
-    // SHOW WINDOW
+    // Alert Method
+    public void showAlert(UserMenuOptions item) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Warning");
+        alert.setHeaderText(null);
+        alert.setContentText("Se você trocar de janela perderá seu jogo");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            //resetGameEasy();
+            getUserMenuOptions().set(item);
+        }
+    }
+
+    // Show window
     public void showInitialWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Home.fxml"));
         createStage(loader);

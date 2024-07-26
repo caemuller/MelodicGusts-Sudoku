@@ -28,11 +28,23 @@ public class UserMenuController implements Initializable {
     }
 
     private void onOptions() {
-        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.OPTIONS);
+        if (Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH4X4) {
+            // mostra alerta
+            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.OPTIONS);
+        }
+        else {
+            Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.OPTIONS);
+        }
     }
 
     private void onNewGame() {
-        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_CHARACTER);
+        if (Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH4X4) {
+            // mostra alerta
+            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.NEWGAME_CHARACTER);
+        }
+        else {
+            Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_CHARACTER);
+        }
     }
 
     private void onExit() {
