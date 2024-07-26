@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserMenuController implements Initializable {
-
     public Button options_btn;
     public Button scores_btn;
     public Button newgame_btn;
@@ -22,21 +21,21 @@ public class UserMenuController implements Initializable {
         addListeners();
     }
 
-    public void addListeners() {
+    private void addListeners() {
         options_btn.setOnAction(event -> onOptions());
         newgame_btn.setOnAction(event -> onNewGame());
         exit_btn.setOnAction(event -> onExit());
     }
 
-    public void onOptions() {
+    private void onOptions() {
         Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.OPTIONS);
     }
 
-    public void onNewGame() {
-        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_BOARD);
+    private void onNewGame() {
+        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_CHARACTER);
     }
 
-    public void onExit() {
+    private void onExit() {
         Stage stage = (Stage) exit_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }

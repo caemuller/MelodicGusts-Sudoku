@@ -77,7 +77,7 @@ public class ViewFactory {
             Model.getInstance().setOnBoard4x4(false); // deixa livre a selecao de tabuleiro
             if (newGameMatch4x4View == null) {
                 try {
-                    newGameMatch4x4View = new FXMLLoader(getClass().getResource("/Fxml/NewGame/NewGameMatch.fxml")).load();
+                    newGameMatch4x4View = new FXMLLoader(getClass().getResource("/Fxml/GameMatch/GameMatch4x4.fxml")).load();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -87,7 +87,7 @@ public class ViewFactory {
         else {
             if (newGameMatch6x6View == null) {
                 try {
-                    newGameMatch6x6View = new FXMLLoader(getClass().getResource("/Fxml/NewGame/NewGameMatch6x6.fxml")).load();
+                    newGameMatch6x6View = new FXMLLoader(getClass().getResource("/Fxml/GameMatch/GameMatch6x6.fxml")).load();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

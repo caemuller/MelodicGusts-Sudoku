@@ -17,12 +17,12 @@ public class NewGameModalityController implements Initializable {
         addListeners();
     }
 
-    public void addListeners() {
+    private void addListeners() {
         pairs_btn.setOnAction(e -> onModality());
         continuation_btn.setOnAction(e -> onModality());
     }
 
     private void onModality() {
-        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_CHARACTER);
+        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_BOARD);
     }
 }

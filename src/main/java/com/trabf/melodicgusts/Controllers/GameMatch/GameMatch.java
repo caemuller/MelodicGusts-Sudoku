@@ -1,4 +1,4 @@
-package com.trabf.melodicgusts.Controllers.Game;
+package com.trabf.melodicgusts.Controllers.GameMatch;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,14 +18,21 @@ public abstract class GameMatch implements Initializable {
     public List<Button> active_buttons = new ArrayList<>();
     public Label accept_lbl;
     public Label error_lbl;
+    public Label score_lbl;
     public MediaView m00_media;
+    protected int score;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.buttons = new Button[gridPane.getRowCount()][gridPane.getColumnCount()];
         createButtons();
         allButtons();
-        confirm_btn.setOnAction(event -> comparisonPiece());  //faz a comparacao
+        scoreInitialize();
+        this.score_lbl.setText("" + score);
+        this.confirm_btn.setOnAction(event -> comparisonPiece());  //faz a comparacao
+    }
+
+    protected void scoreInitialize() {
     }
 
     protected void createButtons() {
@@ -44,17 +51,23 @@ public abstract class GameMatch implements Initializable {
             for (int j = 0; j < gridPane.getColumnCount(); j++) {
                 int finalI = i;
                 int finalJ = j;
+                // coloca um evento para cada botao do gridPane quando este botao for clicado
                 buttons[i][j].setOnAction(event -> onButton(buttons[finalI][finalJ], finalI, finalJ));
             }
         }
     }
 
+    // clicou em um botao do gridPane
     protected void onButton(Button button, int row, int col) {
         accept_lbl.setText("");
         error_lbl.setText("");
         button.setDisable(true); //desabilita botao que foi clicado para nao poder clicar mais de uma vez
         addButton(button);
         openPiece(row, col);
+
+        // score do usuario
+        score -= 1;
+        score_lbl.setText("" + score);
     }
 
     //verifica se existe mais de um botao ativo e para sua musica pq nao pode ter mais de uma musica tocando ao mesmo tempo
