@@ -24,7 +24,6 @@ public class NewGameBoardController implements Initializable {
     }
 
     private void onBoard6x6() {
-        Model.getInstance().setOnBoard6x6(true);
         Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_MODALITY);
 
     }

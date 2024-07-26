@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
-
 public class ViewFactory {
     private final ObjectProperty<UserMenuOptions> userMenuOptions;
     private AnchorPane optionsView;
@@ -19,7 +17,6 @@ public class ViewFactory {
     private AnchorPane newGameCharacterView;
     private AnchorPane newGameMatch4x4View;
     private AnchorPane newGameMatch6x6View;
-
 
     public ViewFactory() {
         this.userMenuOptions = new SimpleObjectProperty<>();
@@ -75,7 +72,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getNewGameMatch4x4View() {
+        // verifica se foi selecionado o jogo no tabuleiro 4x4
         if (Model.getInstance().isOnBoard4x4()) {
+            Model.getInstance().setOnBoard4x4(false); // deixa livre a selecao de tabuleiro
             if (newGameMatch4x4View == null) {
                 try {
                     newGameMatch4x4View = new FXMLLoader(getClass().getResource("/Fxml/NewGame/NewGameMatch.fxml")).load();
@@ -98,7 +97,6 @@ public class ViewFactory {
     }
 
     // SHOW WINDOW
-
     public void showInitialWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Home.fxml"));
         createStage(loader);

@@ -9,6 +9,7 @@ module com.trabf.melodicgusts {
     exports com.trabf.melodicgusts.Controllers;
     exports com.trabf.melodicgusts.Controllers.User;
     exports com.trabf.melodicgusts.Controllers.NewGame;
+    exports com.trabf.melodicgusts.Controllers.Game;
     exports com.trabf.melodicgusts.Models;
     exports com.trabf.melodicgusts.Models.entities;
     exports com.trabf.melodicgusts.Views;

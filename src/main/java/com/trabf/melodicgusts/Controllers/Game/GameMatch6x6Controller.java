@@ -1,4 +1,5 @@
-package com.trabf.melodicgusts.Controllers.NewGame;
+package com.trabf.melodicgusts.Controllers.Game;
+
 
 import com.trabf.melodicgusts.Models.Model;
 import javafx.fxml.Initializable;
@@ -14,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class NewGameMatchController implements Initializable {
+public class GameMatch6x6Controller implements Initializable {
     public Button[][] buttons;
     public GridPane gridPane;
     public Button confirm_btn;
@@ -72,19 +73,11 @@ public class NewGameMatchController implements Initializable {
 
     // executa musica da determinada peca
     public void onMusic(int row, int col) {
-        Media media = Model.getInstance().getBoard4x4().getPieces()[row][col].getMedia();
-        Model.getInstance().getBoard4x4().getMusic().createMediaPlayer(media);
-        m00_media.setMediaPlayer(Model.getInstance().getBoard4x4().getMusic().getMediaPlayer());
+        Media media = Model.getInstance().getBoard6x6().getPieces()[row][col].getMedia();
+        Model.getInstance().getBoard6x6().getMusic().createMediaPlayer(media);
 
-        Model.getInstance().getTimer().reset();
-        Model.getInstance().getTimer().start();
-        while(!Model.getInstance().getTimer().isTimeOver()) {
-
-            Model.getInstance().getBoard4x4().getMusic().getMediaPlayer().play();
-        }
-
-        stopMusic();
-        Model.getInstance().getTimer().reset();
+        m00_media.setMediaPlayer(Model.getInstance().getBoard6x6().getMusic().getMediaPlayer());
+        Model.getInstance().getBoard6x6().getMusic().getMediaPlayer().play();
     }
 
     public void addButton(Button button) {
@@ -139,7 +132,7 @@ public class NewGameMatchController implements Initializable {
         int row = rowButton(button);
         int col = colButton(button);
         // retorna piece Id para comparacao
-        return Model.getInstance().getBoard4x4().getPieces()[row][col].getIdPiece();
+        return Model.getInstance().getBoard6x6().getPieces()[row][col].getIdPiece();
     }
 
     public void onAcert() {
@@ -150,6 +143,7 @@ public class NewGameMatchController implements Initializable {
         active_buttons.get(1).setText("X");
         accept_lbl.setText("Acertou !!!");
         accept_lbl.setStyle("-fx-text-fill: green; -fx-font-size: 1.3em; -fx-font-weight: bold");
+
     }
 
     public void onError() {
@@ -161,7 +155,7 @@ public class NewGameMatchController implements Initializable {
     }
 
     public void stopMusic() {
-        Model.getInstance().getBoard4x4().getMusic().getMediaPlayer().stop();
+        Model.getInstance().getBoard6x6().getMusic().getMediaPlayer().stop();
     }
 
     // pegar a posicao do button
