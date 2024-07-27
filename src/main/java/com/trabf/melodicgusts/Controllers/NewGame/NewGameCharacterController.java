@@ -2,6 +2,7 @@ package com.trabf.melodicgusts.Controllers.NewGame;
 
 import com.trabf.melodicgusts.Models.Model;
 import com.trabf.melodicgusts.Views.UserMenuOptions;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -32,6 +33,6 @@ public class NewGameCharacterController implements Initializable {
     //define o nome do usuario
     private void nameUser() {
         String name = name_fld.getText();
-        Model.getInstance().getUser().setName(name);;
+        Model.getInstance().getUser().nameProperty().set(name);
     }
 }

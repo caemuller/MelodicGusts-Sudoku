@@ -18,7 +18,7 @@ public class Model {
 
     public Model() {
         this.viewFactory = new ViewFactory();
-        this.user = new User("");
+        this.user = new User("Visitante", 0);
         this.piece = new Piece();
         this.board4x4 = new Board(4, 4);
         this.board6x6 = new Board(6, 6);

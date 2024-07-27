@@ -1,27 +1,29 @@
 package com.trabf.melodicgusts.Models.entities;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class User {
-    private String name;
-    private int score;
+    private StringProperty name;
+    private IntegerProperty score;
 
-    public User(String name) {
-        this.name = name;
-        this.score = 0;
+    public User(String name, Integer score) {
+        this.name = new SimpleStringProperty(this, "name", name);
+        this.score = new SimpleIntegerProperty(this, "score", score);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public StringProperty nameProperty() {return name;}
 
-    public void setScore(int score) {
-        this.score = score;
-    }
+    public IntegerProperty scoreProperty() {return score;}
 
     public void incrementScore() {
-        this.score++;
+        //this.score++;
+        score.set(score.get() + 1);
     }
 
     //save score in file
@@ -39,9 +41,5 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public String getName() {
-        return name;
     }
 }

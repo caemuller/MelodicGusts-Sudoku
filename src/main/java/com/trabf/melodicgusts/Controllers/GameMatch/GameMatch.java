@@ -72,16 +72,7 @@ public abstract class GameMatch implements Initializable {
 
     // clicou em um botao do gridPane
     protected void onButton(Button button, int row, int col) {
-        // resetar variaveis, quando jogo iniciar na primeira partida ou posteriores
-        if (Model.getInstance().isStartGame()) {
-            // set startGame = false;
-            Model.getInstance().setStartGame(false);
-            // reset variaveis
-            scoreInitialize();
-            success_count = 0;
-            // clear - para conseguir fazer as comparacoes da maneira certa
-            active_buttons.clear();
-        }
+        resetVariables();
         button.setDisable(true); //desabilita botao que foi clicado para nao poder clicar mais de uma vez
         addButton(button);
         openPiece(row, col);
@@ -90,6 +81,19 @@ public abstract class GameMatch implements Initializable {
         score_lbl.setText("" + score);
         if(!error_lbl.getText().isEmpty()) {
             error_lbl.setText("");
+        }
+    }
+
+    private void resetVariables() {
+        // resetar variaveis, quando jogo iniciar na primeira partida ou posteriores
+        if (Model.getInstance().isStartGame()) {
+            // set startGame = false - pq iniciou o jogo
+            Model.getInstance().setStartGame(false);
+            // reset variaveis
+            scoreInitialize();
+            success_count = 0;
+            // clear - para conseguir fazer as comparacoes da maneira certa
+            active_buttons.clear();
         }
     }
 
@@ -181,13 +185,10 @@ public abstract class GameMatch implements Initializable {
     }
 
     private void winner() {
+        // coloca o score da partida no score do user se for maior do que o que ele possui
+        Model.getInstance().getUser().scoreProperty().set(score);
         // show alert winner
         Model.getInstance().getViewFactory().showAlertWinner();
-        // reset labels
-
-
-        // starGame = 0 to start timer at the beginning of the game
-        // Model.getInstance().setStartGame(); - fazer isso na ViewFactory
     }
 
     protected void stopMusic() {
