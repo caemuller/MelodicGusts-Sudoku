@@ -16,21 +16,33 @@ public abstract class GameMatch implements Initializable {
     public Button[][] buttons;
     public GridPane gridPane;
     public Button confirm_btn;
-    public List<Button> active_buttons = new ArrayList<>();
+    public List<Button> active_buttons;
     public Label accept_lbl;
     public Label error_lbl;
     public Label score_lbl;
+    public Label success_lbl;
     public MediaView m00_media;
     protected int score;
+    protected int success_count;
+    protected int PAIRS;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.buttons = new Button[gridPane.getRowCount()][gridPane.getColumnCount()];
+        constructor();
         createButtons();
         allButtons();
         scoreInitialize();
-        this.score_lbl.setText("" + score);
-        this.confirm_btn.setOnAction(event -> comparisonPiece());  //faz a comparacao
+        // reset labels
+        score_lbl.setText("" + score);
+        success_lbl.setText(0 + "/" + PAIRS);
+        confirm_btn.setOnAction(event -> comparisonPiece());  //faz a comparacao
+    }
+
+    public void constructor() {
+        this.PAIRS = (gridPane.getRowCount() * gridPane.getColumnCount()) / 2;
+        this.buttons = new Button[gridPane.getRowCount()][gridPane.getColumnCount()];
+        this.active_buttons = new ArrayList<>();
+        this.success_count = 0;
     }
 
     protected void scoreInitialize() {
@@ -60,11 +72,13 @@ public abstract class GameMatch implements Initializable {
 
     // clicou em um botao do gridPane
     protected void onButton(Button button, int row, int col) {
+        // resetar variaveis, quando jogo iniciar na primeira partida ou posteriores
         if (Model.getInstance().isStartGame()) {
             // set startGame = false;
             Model.getInstance().setStartGame(false);
-            // reset variables
+            // reset variaveis
             scoreInitialize();
+            success_count = 0;
             // clear - para conseguir fazer as comparacoes da maneira certa
             active_buttons.clear();
         }
@@ -123,7 +137,6 @@ public abstract class GameMatch implements Initializable {
             accept_lbl.setText("");
         } else {
             stopMusic();
-
             int piece1_id = captureId(0);
             int piece2_id = captureId(1);
 
@@ -142,6 +155,9 @@ public abstract class GameMatch implements Initializable {
     }
 
     protected void onAcert() {
+        // acertou, atualiza os acertos da partida
+        success_count++;
+        success_lbl.setText(success_count + "/" + PAIRS);
         // desabilita os botoes pq ja foram acertados
         active_buttons.get(0).setDisable(true);
         active_buttons.get(1).setDisable(true);
@@ -149,6 +165,11 @@ public abstract class GameMatch implements Initializable {
         active_buttons.get(1).setText("X");
         accept_lbl.setText("Acertou !!!");
         accept_lbl.setStyle("-fx-text-fill: green; -fx-font-size: 1.3em; -fx-font-weight: bold");
+
+        // se ganhou o jogo
+        if (success_count == PAIRS) {
+            winner();
+        }
     }
 
     protected void onError() {
@@ -157,6 +178,16 @@ public abstract class GameMatch implements Initializable {
         active_buttons.get(1).setDisable(false);
         accept_lbl.setText("Errou !!!");
         accept_lbl.setStyle("-fx-text-fill: red; -fx-font-size: 1.3em; -fx-font-weight: bold");
+    }
+
+    private void winner() {
+        // show alert winner
+        Model.getInstance().getViewFactory().showAlertWinner();
+        // reset labels
+
+
+        // starGame = 0 to start timer at the beginning of the game
+        // Model.getInstance().setStartGame(); - fazer isso na ViewFactory
     }
 
     protected void stopMusic() {

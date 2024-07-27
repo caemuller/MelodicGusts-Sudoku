@@ -110,17 +110,36 @@ public class ViewFactory {
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK) {
-            // se sendo apresentado o alerta em uma pagina de game 4x4
-            if(Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH4X4){
-                resetGameMatch(gameMatch4x4View, Model.getInstance().getBoard4x4(), 50);
-            } else { // se o alerta nao esta em uma pagina ge game 4x4 ent é de um game 6x6
-                resetGameMatch(gameMatch6x6View, Model.getInstance().getBoard6x6(), 100);
-            }
+            resetGames();
             getUserMenuOptions().set(item);
         }
     }
 
+    public void showAlertWinner() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Warning");
+        alert.setHeaderText(null);
+        alert.setContentText("Você GANHOU, deseja jogar novamente ?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // mantendo no mesmo jogo ou saindo para outra pagina, deve resetar o jogo
+        resetGames();
+
+        if(result.isPresent() && result.get() == ButtonType.CANCEL) {
+            Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.OPTIONS);
+        }
+    }
+
     // Reset Method
+    public void resetGames() {
+        // se sendo apresentado o alerta em uma pagina de game 4x4
+        if(Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH4X4){
+            resetGameMatch(gameMatch4x4View, Model.getInstance().getBoard4x4(), 50);
+        } else { // se o alerta nao esta em uma pagina ge game 4x4 ent é de um game 6x6
+            resetGameMatch(gameMatch6x6View, Model.getInstance().getBoard6x6(), 100);
+        }
+    }
+
     public void resetGameMatch(AnchorPane gameMatchView, Board board, int score) {
         if (gameMatchView != null) {
             // starGame = true para reset labels
@@ -151,6 +170,8 @@ public class ViewFactory {
             error_lbl.setText("");
             Label score_lbl = (Label) gameMatchView.getChildren().get(5);
             score_lbl.setText("" + score);
+            Label success_lbl = (Label) gameMatchView.getChildren().get(6);
+            success_lbl.setText(0 + "/" + (board.getRows() * board.getColumns()) / 2);
         }
     }
 

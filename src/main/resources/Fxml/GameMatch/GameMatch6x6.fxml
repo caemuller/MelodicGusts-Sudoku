@@ -34,5 +34,5 @@
    <Label fx:id="accept_lbl" layoutX="351.0" layoutY="525.0" prefHeight="26.0" prefWidth="83.0" />
    <Label fx:id="error_lbl" layoutX="102.0" layoutY="559.0" prefHeight="26.0" prefWidth="497.0" />
    <Label fx:id="score_lbl" layoutX="657.0" layoutY="165.0" prefHeight="26.0" prefWidth="50.0" text="100" />
-
+    <Label fx:id="success_lbl" layoutX="656.0" layoutY="195.0" prefHeight="18.0" prefWidth="50.0" />
 </AnchorPane>
