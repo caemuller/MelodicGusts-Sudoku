@@ -6,7 +6,6 @@ import com.trabf.melodicgusts.Models.entities.Board;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -111,16 +110,23 @@ public class ViewFactory {
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK) {
-            resetGameMatch(gameMatch4x4View, Model.getInstance().getBoard4x4(), 50);
+            // se sendo apresentado o alerta em uma pagina de game 4x4
+            if(Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH4X4){
+                resetGameMatch(gameMatch4x4View, Model.getInstance().getBoard4x4(), 50);
+            } else { // se o alerta nao esta em uma pagina ge game 4x4 ent é de um game 6x6
+                resetGameMatch(gameMatch6x6View, Model.getInstance().getBoard6x6(), 100);
+            }
             getUserMenuOptions().set(item);
         }
     }
 
     // Reset Method
     public void resetGameMatch(AnchorPane gameMatchView, Board board, int score) {
-        if (gameMatch4x4View != null) {
+        if (gameMatchView != null) {
             // starGame = true para reset labels
             Model.getInstance().setStartGame(true);
+            // stopMusic - para nao continuar tocando a musica em uma tela sem ser o jogo
+            board.getMusic().getMediaPlayer().stop();
             // random pieces
             board.getPairPieces().clear();
             for (int i = 0; i < board.getRows(); i++) {
@@ -138,7 +144,7 @@ public class ViewFactory {
                 Button button = (Button) grid.getChildren().get(i);
                 button.setText("?");
             }
-            // reset labels in GameMatch4x4
+            // reset labels
             Label accept_lbl = (Label) gameMatchView.getChildren().get(3);
             accept_lbl.setText("");
             Label error_lbl = (Label) gameMatchView.getChildren().get(4);

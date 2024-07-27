@@ -26,9 +26,7 @@ public class GameMatch6x6Controller extends GameMatch {
     }
 
     @Override
-    protected void stopMusic() {
-        Model.getInstance().getBoard6x6().getMusic().getMediaPlayer().stop();
-    }
+    protected void stopMusic() {Model.getInstance().getBoard6x6().getMusic().getMediaPlayer().stop();}
 
     // executa musica da determinada peca
     @Override

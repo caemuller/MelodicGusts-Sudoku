@@ -65,6 +65,8 @@ public abstract class GameMatch implements Initializable {
             Model.getInstance().setStartGame(false);
             // reset variables
             scoreInitialize();
+            // clear - para conseguir fazer as comparacoes da maneira certa
+            active_buttons.clear();
         }
         button.setDisable(true); //desabilita botao que foi clicado para nao poder clicar mais de uma vez
         addButton(button);
