@@ -2,6 +2,7 @@ package com.trabf.melodicgusts.Views;
 
 import com.trabf.melodicgusts.Controllers.User.UserController;
 import com.trabf.melodicgusts.Models.Model;
+import com.trabf.melodicgusts.Models.entities.Board;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -110,25 +111,25 @@ public class ViewFactory {
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK) {
-            resetGameMatch4x4();
+            resetGameMatch(gameMatch4x4View, Model.getInstance().getBoard4x4(), 50);
             getUserMenuOptions().set(item);
         }
     }
 
     // Reset Method
-    public void resetGameMatch4x4() {
+    public void resetGameMatch(AnchorPane gameMatchView, Board board, int score) {
         if (gameMatch4x4View != null) {
             // starGame = true para reset labels
             Model.getInstance().setStartGame(true);
             // random pieces
-            Model.getInstance().getBoard4x4().getPairPieces().clear();
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    Model.getInstance().getBoard4x4().randomPieces(i, j);
+            board.getPairPieces().clear();
+            for (int i = 0; i < board.getRows(); i++) {
+                for (int j = 0; j < board.getColumns(); j++) {
+                    board.randomPieces(i, j);
                 }
             }
             // reset Disable
-            GridPane grid = (GridPane) gameMatch4x4View.getChildren().get(1);
+            GridPane grid = (GridPane) gameMatchView.getChildren().get(1);
             // i comeca por 1, pq o i=0 é o MediaView
             for (int i = 1; i < (grid.getRowCount() * grid.getColumnCount()) + 1; i++) {
                 // permite clicar em todos botoes
@@ -138,12 +139,12 @@ public class ViewFactory {
                 button.setText("?");
             }
             // reset labels in GameMatch4x4
-            Label accept_lbl = (Label) gameMatch4x4View.getChildren().get(3);
+            Label accept_lbl = (Label) gameMatchView.getChildren().get(3);
             accept_lbl.setText("");
-            Label error_lbl = (Label) gameMatch4x4View.getChildren().get(4);
+            Label error_lbl = (Label) gameMatchView.getChildren().get(4);
             error_lbl.setText("");
-            Label score_lbl = (Label) gameMatch4x4View.getChildren().get(5);
-            score_lbl.setText("50");
+            Label score_lbl = (Label) gameMatchView.getChildren().get(5);
+            score_lbl.setText("" + score);
         }
     }
 

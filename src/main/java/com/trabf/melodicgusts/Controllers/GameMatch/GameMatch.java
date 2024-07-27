@@ -72,6 +72,9 @@ public abstract class GameMatch implements Initializable {
         // score do usuario
         score -= 1;
         score_lbl.setText("" + score);
+        if(!error_lbl.getText().isEmpty()) {
+            error_lbl.setText("");
+        }
     }
 
     //verifica se existe mais de um botao ativo e para sua musica pq nao pode ter mais de uma musica tocando ao mesmo tempo

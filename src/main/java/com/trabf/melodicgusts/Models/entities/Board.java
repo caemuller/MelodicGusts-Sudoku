@@ -19,13 +19,13 @@ public class Board {
         createPieces();
     }
 
-    public Piece[][] getPieces() {
-        return pieces;
-    }
+    public Piece[][] getPieces() {return pieces;}
 
-    public List<Integer> getPairPieces() {
-        return pairPieces;
-    }
+    public int getRows() {return rows;}
+
+    public int getColumns() {return columns;}
+
+    public List<Integer> getPairPieces() {return pairPieces;}
 
     public void createPieces() {
         for (int i = 0; i < rows; i++) {

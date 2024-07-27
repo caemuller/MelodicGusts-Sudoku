@@ -32,6 +32,10 @@ public class UserMenuController implements Initializable {
             // mostra alerta
             Model.getInstance().getViewFactory().showAlert(UserMenuOptions.OPTIONS);
         }
+        else if(Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH6X6){
+            // mostra alerta
+            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.OPTIONS);
+        }
         else {
             Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.OPTIONS);
         }
@@ -39,6 +43,10 @@ public class UserMenuController implements Initializable {
 
     private void onNewGame() {
         if (Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH4X4) {
+            // mostra alerta
+            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.NEWGAME_CHARACTER);
+        }
+        else if(Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH6X6){
             // mostra alerta
             Model.getInstance().getViewFactory().showAlert(UserMenuOptions.NEWGAME_CHARACTER);
         }
