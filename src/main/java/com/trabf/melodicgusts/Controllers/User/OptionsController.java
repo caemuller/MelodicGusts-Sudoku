@@ -18,7 +18,7 @@ public class OptionsController implements Initializable {
     }
 
     private void bindData() {
-        user_lbl.textProperty().bind(Bindings.concat("Maior pontuação de ")
+        user_lbl.textProperty().bind(Bindings.concat("Melhor pontuação de ")
                 .concat(Model.getInstance().getUser().nameProperty()));
         score_lbl.textProperty().bind(Model.getInstance().getUser().scoreProperty().asString());
     }

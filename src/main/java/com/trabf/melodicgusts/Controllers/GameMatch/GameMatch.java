@@ -189,6 +189,8 @@ public abstract class GameMatch implements Initializable {
         Model.getInstance().getUser().scoreProperty().set(score);
         // show alert winner
         Model.getInstance().getViewFactory().showAlertWinner();
+        // salvar no arquivo
+        Model.getInstance().getUser().saveScore();
     }
 
     protected void stopMusic() {

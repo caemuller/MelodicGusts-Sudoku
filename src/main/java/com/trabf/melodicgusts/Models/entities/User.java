@@ -29,7 +29,7 @@ public class User {
     //save score in file
     public void saveScore() {
         String filePath = "Scores.txt";
-        String content = "User: " + this.name + " Score: " + this.score + "\n";
+        String content = "User: " + nameProperty().get() + " Score: " + scoreProperty().get() + "\n";
 
         // Use FileWriter and BufferedWriter to write to the file
         try (FileWriter fw = new FileWriter(filePath);
