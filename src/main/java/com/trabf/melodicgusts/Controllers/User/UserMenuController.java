@@ -10,10 +10,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserMenuController implements Initializable {
-    public Button options_btn;
-    public Button scores_btn;
+    public Button score_btn;
     public Button newgame_btn;
-    public Button about_btn;
     public Button exit_btn;
 
     @Override
@@ -22,22 +20,22 @@ public class UserMenuController implements Initializable {
     }
 
     private void addListeners() {
-        options_btn.setOnAction(event -> onOptions());
+        score_btn.setOnAction(event -> onScore());
         newgame_btn.setOnAction(event -> onNewGame());
         exit_btn.setOnAction(event -> onExit());
     }
 
-    private void onOptions() {
+    private void onScore() {
         if (Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH4X4) {
             // mostra alerta
-            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.OPTIONS);
+            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.SCORE);
         }
         else if(Model.getInstance().getViewFactory().getUserMenuOptions().get() == UserMenuOptions.GAME_MATCH6X6){
             // mostra alerta
-            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.OPTIONS);
+            Model.getInstance().getViewFactory().showAlert(UserMenuOptions.SCORE);
         }
         else {
-            Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.OPTIONS);
+            Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.SCORE);
         }
     }
 

@@ -19,7 +19,7 @@ public class UserController implements Initializable {
                case NEWGAME_CHARACTER -> user_parent.setCenter(Model.getInstance().getViewFactory().getNewGameCharacterView());
                case GAME_MATCH4X4 -> user_parent.setCenter(Model.getInstance().getViewFactory().getGameMatch4x4View());
                case GAME_MATCH6X6 -> user_parent.setCenter(Model.getInstance().getViewFactory().getGameMatch6x6View());
-               default -> user_parent.setCenter(Model.getInstance().getViewFactory().getOptionsView());
+               default -> user_parent.setCenter(Model.getInstance().getViewFactory().getScoreView());
            }
         });
     }

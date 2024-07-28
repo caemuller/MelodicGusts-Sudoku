@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class ViewFactory {
     private final ObjectProperty<UserMenuOptions> userMenuOptions;
-    private AnchorPane optionsView;
+    private AnchorPane scoreView;
     private AnchorPane newGameBoardView;
     private AnchorPane newGameModalityView;
     private AnchorPane newGameCharacterView;
@@ -36,15 +36,15 @@ public class ViewFactory {
     }
 
 
-    public AnchorPane getOptionsView() {
-        if (optionsView == null) {
+    public AnchorPane getScoreView() {
+        if (scoreView == null) {
             try {
-                optionsView = new FXMLLoader(getClass().getResource("/Fxml/User/Options.fxml")).load();
+                scoreView = new FXMLLoader(getClass().getResource("/Fxml/User/Score.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return optionsView;
+        return scoreView;
     }
 
     public AnchorPane getNewGameBoardView() {
@@ -127,7 +127,7 @@ public class ViewFactory {
         resetGames();
 
         if(result.isPresent() && result.get() == ButtonType.CANCEL) {
-            Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.OPTIONS);
+            Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.SCORE);
         }
     }
 

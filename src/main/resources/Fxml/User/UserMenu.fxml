@@ -9,9 +9,7 @@
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.trabf.melodicgusts.Controllers.User.UserMenuController">
-   <Button fx:id="options_btn" mnemonicParsing="false" text="Options"/>
-   <Button fx:id="scores_btn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Scores"/>
+   <Button fx:id="score_btn" mnemonicParsing="false" text="Score"/>
    <Button fx:id="newgame_btn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="NewGame"/>
-   <Button fx:id="about_btn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="About"/>
    <Button fx:id="exit_btn" mnemonicParsing="false" text="Exit"/>
 </HBox>
