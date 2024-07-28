@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+.game_mode_container {
+    -fx-background-color: #000000;
+}
+
+.game_mode_container Text {
+    -fx-font-size: 5em;
+    -fx-font-family: "Titan One", sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-fill: #FF8100;
+}
+
+.game_mode_container Button {
+    -fx-background-color: #FF8100;
+    -fx-text-fill: #000000;
+}
+
+.game_mode_container Button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #029502;
+}
