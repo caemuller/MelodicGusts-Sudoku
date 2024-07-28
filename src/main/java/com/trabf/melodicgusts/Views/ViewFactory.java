@@ -154,7 +154,7 @@ public class ViewFactory {
                 }
             }
             // reset Disable
-            GridPane grid = (GridPane) gameMatchView.getChildren().get(1);
+            GridPane grid = (GridPane) gameMatchView.getChildren().get(0);
             // i comeca por 1, pq o i=0 é o MediaView
             for (int i = 1; i < (grid.getRowCount() * grid.getColumnCount()) + 1; i++) {
                 // permite clicar em todos botoes
@@ -164,13 +164,15 @@ public class ViewFactory {
                 button.setText("?");
             }
             // reset labels
-            Label accept_lbl = (Label) gameMatchView.getChildren().get(3);
+            Label accept_lbl = (Label) gameMatchView.getChildren().get(2);
             accept_lbl.setText("");
-            Label error_lbl = (Label) gameMatchView.getChildren().get(4);
+            Label error_lbl = (Label) gameMatchView.getChildren().get(3);
             error_lbl.setText("");
-            Label score_lbl = (Label) gameMatchView.getChildren().get(5);
+
+            AnchorPane anchorPane = (AnchorPane) gameMatchView.getChildren().get(4);
+            Label score_lbl = (Label) anchorPane.getChildren().get(0);
             score_lbl.setText("" + score);
-            Label success_lbl = (Label) gameMatchView.getChildren().get(6);
+            Label success_lbl = (Label) anchorPane.getChildren().get(1);
             success_lbl.setText(0 + "/" + (board.getRows() * board.getColumns()) / 2);
         }
     }

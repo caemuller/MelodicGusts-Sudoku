@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+.game_container {
+    -fx-background-color: #000000;
+}
+
+.game_container_title {
+    -fx-font-size: 4em;
+    -fx-font-family: "Titan One", sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-fill: #0B01FF;
+}
+
+.game_data_container {
+    -fx-border-radius: 10 10 10 10;
+    -fx-border-width: 5;
+    -fx-border-color: #0B01FF;
+}
+
+.game_data_container Text{
+    -fx-font-size: 1.2em;
+    -fx-font-family: "Titan One", sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-fill: #0B01FF;
+}
+
+.game_data_container Label {
+    -fx-font-size: 1em;
+    -fx-text-fill: #FFFFFF;
+}
