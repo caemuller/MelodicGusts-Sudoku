@@ -145,7 +145,9 @@ public class ViewFactory {
             // starGame = true para reset labels
             Model.getInstance().setStartGame(true);
             // stopMusic - para nao continuar tocando a musica em uma tela sem ser o jogo
-            board.getMusic().getMediaPlayer().stop();
+            if(board.getMusic().getMediaPlayer() != null){
+                board.getMusic().getMediaPlayer().stop();
+            }
             // random pieces
             board.getPairPieces().clear();
             for (int i = 0; i < board.getRows(); i++) {

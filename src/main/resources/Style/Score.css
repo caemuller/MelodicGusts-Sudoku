@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+.home_container {
+    -fx-background-color: #000000;
+}
+
+.home_container_title {
+    -fx-font-size: 3em;
+    -fx-font-family: "Titan One", sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-text-fill: #0B01FF;
+}
+
+.home_container_lbl {
+    -fx-font-size: 10em;
+    -fx-text-fill: #3270ff;
+}
