@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="game_mode_container" stylesheets="@../../Style/Board.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trabf.melodicgusts.Controllers.NewGame.NewGameBoardController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="game_mode_container" stylesheets="@../../Style/Mode.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trabf.melodicgusts.Controllers.NewGame.NewGameBoardController">
    <Text layoutX="106.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escolha o Tabuleiro" />
    <Button fx:id="board4x4_btn" layoutX="106.0" layoutY="256.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="4x4" />
    <Button fx:id="board6x6_btn" layoutX="501.0" layoutY="256.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="6x6" />

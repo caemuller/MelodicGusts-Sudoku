@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="game_mode_container" stylesheets="@../../Style/User.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trabf.melodicgusts.Controllers.NewGame.NewGameCharacterController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="game_mode_container" stylesheets="@../../Style/Mode.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trabf.melodicgusts.Controllers.NewGame.NewGameCharacterController">
     <Text layoutX="106.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game_mode_container" text="Informe seu nome:" />
    <TextField fx:id="name_fld" layoutX="221.0" layoutY="265.0" prefHeight="42.0" prefWidth="358.0" />
    <Button fx:id="ready_btn" layoutX="578.0" layoutY="516.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="188.0" text="Estou Pronto!" />
