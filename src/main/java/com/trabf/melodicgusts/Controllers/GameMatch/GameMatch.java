@@ -73,6 +73,11 @@ public abstract class GameMatch implements Initializable {
     // clicou em um botao do gridPane
     protected void onButton(Button button, int row, int col) {
         resetVariables();
+        if (score == 0) {
+            // mostra alerta que perdeu
+            showFinalAlert("PERDEU");
+            return;
+        }
         button.setDisable(true); //desabilita botao que foi clicado para nao poder clicar mais de uma vez
         addButton(button);
         openPiece(row, col);
@@ -184,11 +189,16 @@ public abstract class GameMatch implements Initializable {
         accept_lbl.setStyle("-fx-text-fill: red; -fx-font-size: 1.3em; -fx-font-weight: bold");
     }
 
+    private void showFinalAlert(String victoryOrDefeat) {
+        // show alert
+        Model.getInstance().getViewFactory().showFinalAlert(victoryOrDefeat);
+    }
+
     private void winner() {
         // coloca o score da partida no score do user se for maior do que o que ele possui
         Model.getInstance().getUser().scoreProperty().set(score);
-        // show alert winner
-        Model.getInstance().getViewFactory().showAlertWinner();
+        // mostra alerta que venceu
+        showFinalAlert("GANHOU");
         // salvar no arquivo
         Model.getInstance().getUser().saveScore();
     }

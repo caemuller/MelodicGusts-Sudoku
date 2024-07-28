@@ -116,11 +116,11 @@ public class ViewFactory {
         }
     }
 
-    public void showAlertWinner() {
+    public void showFinalAlert(String victoryOrDefeat) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Warning");
         alert.setHeaderText(null);
-        alert.setContentText("Você GANHOU, deseja jogar novamente ?");
+        alert.setContentText("Você " + victoryOrDefeat + ", deseja jogar novamente ?");
         Optional<ButtonType> result = alert.showAndWait();
 
         // mantendo no mesmo jogo ou saindo para outra pagina, deve resetar o jogo
