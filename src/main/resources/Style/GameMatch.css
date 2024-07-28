@@ -12,6 +12,16 @@
     -fx-fill: #0B01FF;
 }
 
+.game_container Button {
+    -fx-background-color: #0B01FF;
+    -fx-text-fill: #000000;
+}
+
+.game_container Button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #029502;
+}
+
 .game_data_container {
     -fx-border-radius: 10 10 10 10;
     -fx-border-width: 5;

@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="game_container" stylesheets="@../../Style/GameMatch.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trabf.melodicgusts.Controllers.GameMatch.GameMatch4x4Controller">
@@ -25,12 +26,18 @@
         </rowConstraints>
       <MediaView fx:id="m00_media" fitHeight="87.0" fitWidth="110.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
     </GridPane>
-   <Button fx:id="confirm_btn" layoutX="362.0" layoutY="525.0" mnemonicParsing="false" text="Confirm" />
-   <Label fx:id="accept_lbl" layoutX="440.0" layoutY="524.0" prefHeight="26.0" prefWidth="83.0" />
+   <Button fx:id="confirm_btn" layoutX="349.0" layoutY="524.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Confirme" />
+   <Label fx:id="accept_lbl" layoutX="460.0" layoutY="524.0" prefHeight="26.0" prefWidth="83.0" />
    <Label fx:id="error_lbl" layoutX="171.0" layoutY="559.0" prefHeight="26.0" prefWidth="497.0" />
     <AnchorPane layoutX="201.0" layoutY="23.0" prefHeight="80.0" prefWidth="398.0" styleClass="game_data_container">
-        <Label fx:id="score_lbl" layoutX="81.0" layoutY="14.0" prefHeight="49.0" prefWidth="85.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="251.8" />
-        <Label fx:id="success_lbl" layoutX="273.0" layoutY="20.0" prefHeight="42.0" prefWidth="59.0" text=" " />
+        <Label fx:id="score_lbl" layoutX="85.0" layoutY="12.0" prefHeight="56.0" prefWidth="91.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="233.4">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+        <Label fx:id="success_lbl" layoutX="269.0" layoutY="12.0" prefHeight="56.0" prefWidth="102.0" text=" ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
         <Text fill="WHITE" layoutX="26.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score" wrappingWidth="59.200000000000045" />
         <Text fill="WHITE" layoutX="220.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pairs" wrappingWidth="59.200000000000045" />
     </AnchorPane>
