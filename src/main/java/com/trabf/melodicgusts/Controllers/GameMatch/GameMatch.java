@@ -84,6 +84,7 @@ public abstract class GameMatch implements Initializable {
         // score do usuario
         score -= 1;
         score_lbl.setText("" + score);
+        accept_lbl.setText("");
         if(!error_lbl.getText().isEmpty()) {
             error_lbl.setText("");
         }

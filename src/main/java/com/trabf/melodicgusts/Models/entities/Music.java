@@ -12,8 +12,6 @@ public class Music {
     private final ArrayList<File> songs;
     private MediaPlayer mediaPlayer;
 
-
-
     public Music() {
         this.directory = new File("src/main/resources/Music");
         this.files = directory.listFiles();
