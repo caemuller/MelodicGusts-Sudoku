@@ -22,7 +22,6 @@ public class ViewFactory {
     private final ObjectProperty<UserMenuOptions> userMenuOptions;
     private AnchorPane scoreView;
     private AnchorPane newGameBoardView;
-    private AnchorPane newGameModalityView;
     private AnchorPane newGameCharacterView;
     private AnchorPane gameMatch4x4View;
     private AnchorPane gameMatch6x6View;
@@ -56,17 +55,6 @@ public class ViewFactory {
             }
         }
         return newGameBoardView;
-    }
-
-    public AnchorPane getNewGameModalityView() {
-        if (newGameModalityView == null) {
-            try {
-                newGameModalityView = new FXMLLoader(getClass().getResource("/Fxml/NewGame/NewGameModality.fxml")).load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return newGameModalityView;
     }
 
     public AnchorPane getNewGameCharacterView() {

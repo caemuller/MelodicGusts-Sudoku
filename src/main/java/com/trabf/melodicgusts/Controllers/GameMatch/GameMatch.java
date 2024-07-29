@@ -166,7 +166,7 @@ public abstract class GameMatch implements Initializable {
 
     protected void onAcert() {
         score+=2;
-
+        score_lbl.setText("" + score);
         // acertou, atualiza os acertos da partida
         success_count++;
         success_lbl.setText(success_count + "/" + PAIRS);
@@ -186,6 +186,7 @@ public abstract class GameMatch implements Initializable {
 
     protected void onError() {
         score-=1;
+        score_lbl.setText("" + score);
         // habilita os botoes para poderem ser clicados
         active_buttons.get(0).setDisable(false);
         active_buttons.get(1).setDisable(false);

@@ -27,7 +27,7 @@ public class NewGameCharacterController implements Initializable {
 
     private void onReady() {
         name_fld.clear();
-        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_MODALITY);
+        Model.getInstance().getViewFactory().getUserMenuOptions().set(UserMenuOptions.NEWGAME_BOARD);
     }
 
     //define o nome do usuario
