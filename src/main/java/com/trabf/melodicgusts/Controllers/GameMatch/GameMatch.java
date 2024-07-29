@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
+// classe que controla os botoes da parte grafica
 public abstract class GameMatch implements Initializable {
     public Button[][] buttons;
     public GridPane gridPane;

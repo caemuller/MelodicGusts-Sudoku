@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+// classe que controla os botoes da parte grafica
 public class HomeController implements Initializable {
     public Button space_btn;
 

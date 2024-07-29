@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+// classe que controla os botoes da parte grafica
 public class UserMenuController implements Initializable {
     public Button score_btn;
     public Button newgame_btn;

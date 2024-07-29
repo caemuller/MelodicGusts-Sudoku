@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+// classe que controla os botoes da parte grafica
 public class UserController implements Initializable {
     public BorderPane user_parent;
 

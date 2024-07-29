@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 
+// classe que controla os botoes da parte grafica
 public class GameMatch4x4Controller extends GameMatch implements Initializable {
 
     @Override

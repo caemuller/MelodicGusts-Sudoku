@@ -8,7 +8,8 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class OptionsController implements Initializable {
+// classe que controla os botoes da parte grafica
+public class ScoreController implements Initializable {
     public Label user_lbl;
     public Label score_lbl;
 
