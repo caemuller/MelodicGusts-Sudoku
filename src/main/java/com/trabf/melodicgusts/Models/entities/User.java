@@ -3,7 +3,11 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+// import hashmap
+import java.util.HashMap;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,16 +33,51 @@ public class User {
     //save score in file
     public void saveScore() {
         String filePath = "Scores.txt";
-        String content = "User: " + nameProperty().get() + " Score: " + scoreProperty().get() + "\n";
+        // create hash map to store user scores
+        HashMap<String, Integer> userScores = new HashMap<>();
+        //read file if exists adn complete hashmap
+        try {
+            // Use FileReader and BufferedReader to read the file
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
 
-        // Use FileWriter and BufferedWriter to write to the file
-        try (FileWriter fw = new FileWriter(filePath);
-             BufferedWriter bw = new BufferedWriter(fw)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(": ");
+                String name = parts[0].substring(6);
+                int score = Integer.parseInt(parts[1].substring(7));
+                userScores.put(name, score);
+            }
 
-            bw.write(content);
-            System.out.println("File written successfully.");
-
+            br.close();
+            fr.close();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // check if name is already in hashmap
+        if (userScores.containsKey(nameProperty().get())) {
+            // if it is, update the score adding to the previous score
+            userScores.put(nameProperty().get(), scoreProperty().get() + userScores.get(nameProperty().get()));
+        } else {
+            // if it isn't, add the name and score
+            userScores.put(nameProperty().get(), scoreProperty().get());
+        }
+
+
+        //overwrite file with new scores
+        try {
+            // Use FileWriter and BufferedWriter to write the file
+            FileWriter fw = new FileWriter(filePath);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for (String key : userScores.keySet()) {
+                bw.write("Name: " + key + ", Score: " + userScores.get(key) + "\n");
+            }
+
+            bw.close();
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
