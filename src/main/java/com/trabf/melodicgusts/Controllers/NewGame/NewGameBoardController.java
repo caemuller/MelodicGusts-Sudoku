@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+// classe que controla os botoes da parte grafica
 public class NewGameBoardController implements Initializable {
     public Button board4x4_btn;
     public Button board6x6_btn;

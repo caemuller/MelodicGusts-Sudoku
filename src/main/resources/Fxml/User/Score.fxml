@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="home_container" stylesheets="@../../Style/Score.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trabf.melodicgusts.Controllers.User.OptionsController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="home_container" stylesheets="@../../Style/Score.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trabf.melodicgusts.Controllers.User.ScoreController">
    <Label fx:id="user_lbl" layoutX="102.0" layoutY="74.0" prefHeight="193.0" prefWidth="644.0" styleClass="home_container_title" />
-   <Label fx:id="score_lbl" layoutX="355.0" layoutY="277.0" prefHeight="150.0" prefWidth="138.0" styleClass="home_container_lbl" />
+   <Label fx:id="score_lbl" layoutX="345.0" layoutY="280.0" prefHeight="176.0" prefWidth="235.0" styleClass="home_container_lbl" />
 </AnchorPane>

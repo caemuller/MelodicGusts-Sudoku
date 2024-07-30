@@ -4,6 +4,7 @@ import com.trabf.melodicgusts.Models.Model;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 
+// classe que controla os botoes da parte grafica
 public class GameMatch6x6Controller extends GameMatch {
 
     @Override

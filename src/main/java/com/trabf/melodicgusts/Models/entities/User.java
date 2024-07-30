@@ -25,11 +25,6 @@ public class User {
 
     public IntegerProperty scoreProperty() {return score;}
 
-    public void incrementScore() {
-        //this.score++;
-        score.set(score.get() + 1);
-    }
-
     //save score in file
     public void saveScore() {
         String filePath = "Scores.txt";
