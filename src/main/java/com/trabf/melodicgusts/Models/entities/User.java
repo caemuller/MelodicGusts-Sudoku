@@ -35,21 +35,18 @@ public class User {
             // Use FileReader and BufferedReader to read the file
             FileReader fr = new FileReader(filePath);
             BufferedReader br = new BufferedReader(fr);
-
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(": ");
+                String[] parts = line.split(", Score: ");
                 String name = parts[0].substring(6);
-                int score = Integer.parseInt(parts[1].substring(7));
+                int score = Integer.parseInt(parts[1].substring(1));
                 userScores.put(name, score);
             }
-
             br.close();
             fr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         // check if name is already in hashmap
         if (userScores.containsKey(nameProperty().get())) {
             // if it is, update the score adding to the previous score
@@ -58,18 +55,14 @@ public class User {
             // if it isn't, add the name and score
             userScores.put(nameProperty().get(), scoreProperty().get());
         }
-
-
         //overwrite file with new scores
         try {
             // Use FileWriter and BufferedWriter to write the file
             FileWriter fw = new FileWriter(filePath);
             BufferedWriter bw = new BufferedWriter(fw);
-
             for (String key : userScores.keySet()) {
                 bw.write("Name: " + key + ", Score: " + userScores.get(key) + "\n");
             }
-
             bw.close();
         }
         catch (IOException e) {
