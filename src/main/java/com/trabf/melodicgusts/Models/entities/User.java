@@ -39,8 +39,14 @@ public class User {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(": ");
-                String name = parts[0].substring(6);
-                int score = Integer.parseInt(parts[1].substring(7));
+                for (String part : parts) {
+                    System.out.println("parts: " + part);
+                }
+
+                String name = parts[0].substring(4);
+                System.out.println("name: " + name);
+                int score = Integer.parseInt(parts[1].substring(1));
+                System.out.println("score: " + score);
                 userScores.put(name, score);
             }
 
